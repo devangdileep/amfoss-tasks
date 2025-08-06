@@ -1,5 +1,5 @@
 Command I Learned While Solving This 
--------------------------------------
+=====================================
 
 
 1. greb -r {directory} [ to search some keyword in whole directory ]
@@ -9,10 +9,10 @@ Command I Learned While Solving This
 5. touch {filename} [ to create files into the directory ]
 
 Captured Strings
------------------
+=================
 
 1st Task
-=========
+-----------
 
 You’ve uncovered the first piece of the puzzle — well done, explorer.
 
@@ -24,7 +24,7 @@ Wipe it from existence so no one — and nothing — can trace your path.
 The future depends on secrecy.
 
 2nd Task
-=========
+-------------
 
 This is your second key wbGV0ZWQgdGhlIFRlcm1pbmFsIEh1bnQhIFJ1biBncmF2aXR5
  
