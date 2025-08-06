@@ -2,11 +2,11 @@ Command I Learned While Solving This
 -------------------------------------
 
 
-greb -r {directory} [ to search some keyword in whole directory ]
-ls -a  [ to show hidden files in a directory ] 
-ls [show files in the directory]
-cat {filename} [ helps to print a file in the terminal ]
-touch {filename} [ to create files into the directory ]
+1. greb -r {directory} [ to search some keyword in whole directory ]
+2. ls -a  [ to show hidden files in a directory ] 
+3. ls [show files in the directory]
+4. cat {filename} [ helps to print a file in the terminal ]
+5. touch {filename} [ to create files into the directory ]
 
 Captured Strings
 -----------------
