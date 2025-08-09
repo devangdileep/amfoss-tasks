@@ -10,8 +10,10 @@ bot = commands.Bot(command_prefix='/', intents=intents , help_command = None)
 
 @bot.command()
 async def help(ctx):
-    embed = discord.Embeded(title = "Help Commands" , description = "Under Construction")
-    await ctx.send(embed)
+    embed = discord.Embed(
+        title = "Help Commands",
+        description = "Under Construction")
+    await ctx.send(embed=embed)
 
 @bot.command()
 async def lyrics(ctx, *, input1):
@@ -24,6 +26,7 @@ async def lyrics(ctx, *, input1):
             data = await data.json()
     lyrics = data.get("lyrics")
     await ctx.send(lyrics)
+
 
 
 load_dotenv() 
