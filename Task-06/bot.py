@@ -1,6 +1,7 @@
 import os
 import aiohttp
 import discord
+import musicbrainzngs
 from discord.ext import commands
 from dotenv import load_dotenv
 
@@ -11,8 +12,11 @@ bot = commands.Bot(command_prefix='/', intents=intents , help_command = None)
 @bot.command()
 async def help(ctx):
     embed = discord.Embed(
-        title = "Help Commands",
-        description = "Under Construction")
+        title = "Available Commands",
+        color=0x1DB954)
+    embed.add_field(name="🎼 **/lyrics**",
+        value="Get the lyrics of a song.\n**Format:** `/lyrics artist - song name`",
+        inline=False)
     await ctx.send(embed=embed)
 
 @bot.command()
