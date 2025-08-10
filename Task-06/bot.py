@@ -29,7 +29,10 @@ async def lyrics(ctx, *, input1):
     songinfo = data[0]
     line = songinfo.get("plainLyrics")
     line = line[:500] 
-    await ctx.send(f"{song} by {artist}: {line}")
+
+    embed = discord.Embed(title=f"**🎵 {song} by {artist}**", color=0x1DB954)
+    embed.add_field(name="", value=line, inline=False)
+    await ctx.send(embed=embed)
 
 @bot.command()
 async def track(ctx, *, input1):
