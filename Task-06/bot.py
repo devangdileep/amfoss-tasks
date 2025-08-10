@@ -1,7 +1,6 @@
 import os
 import aiohttp
 import discord
-import musicbrainzngs
 from discord.ext import commands
 from dotenv import load_dotenv
 
@@ -18,16 +17,19 @@ async def help(ctx):
 
 @bot.command()
 async def lyrics(ctx, *, input1):
-    l = input1.split('-', 1)
-    artist = l[0].strip()
-    song = l[1].strip()
-    url = f"https://api.lyrics.ovh/v1/{artist}/{song}"
-    async with aiohttp.ClientSession() as searching:
-        async with searching.get(url) as data:
-            data = await data.json()
-    lyrics = data.get("lyrics")
-    await ctx.send(lyrics)
+    inp = input1.split("-", 1)
+    artist = inp[0].strip()
+    song = inp[1].strip()
 
+    url = f"https://lrclib.net/api/search?track_name={song}&artist_name={artist}"
+    async with aiohttp.ClientSession() as s:
+        async with s.get(url) as r:
+            data = await r.json()
+
+    songinfo = data[0]
+    line = songinfo.get("plainLyrics")
+    line = line[:500] 
+    await ctx.send(f"{song} by {artist}: {line}")
 
 @bot.command()
 async def track(ctx, *, input1):
