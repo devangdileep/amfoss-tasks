@@ -1,4 +1,5 @@
 import os
+import json
 import aiohttp
 import discord
 from discord.ext import commands
@@ -62,6 +63,37 @@ async def track(ctx, *, input1):
     embed.add_field(name="**📅 Release Date**", value=date, inline=False)
     await ctx.send(embed=embed)
 
+@bot.command()
+async def playlist(ctx, action=None, *, song=None):
+    with open("playlist.json", "r") as f:
+        playlists = json.load(f)
+    user_id = str(ctx.author.id)
+    if action == "add":
+        if user_id not in playlists:
+            playlists[user_id] = []
+        playlists[user_id].append(song)
+        with open("playlist.json", "w") as f:
+            json.dump(playlists, f)
+        await ctx.send(f"added `{song}` to your playlist")
+
+    elif action == "remove":
+        user_id in playlists and song in playlists[user_id]
+        playlists[user_id].remove(song)
+        with open("playlist.json", "w") as f:
+            json.dump(playlists, f)
+        await ctx.send(f"removed `{song}` from your playlist")
+    elif action == "view":
+        text = ""
+        counter = 1
+        for s in playlists[user_id]:
+            text += f"{counter}. {s}\n"
+            counter += 1
+        await ctx.send(f"your playlist:\n{text}")
+    elif action == "clear":
+        playlists[user_id] = []
+        with open("playlist.json", "w") as f:
+            json.dump(playlists, f)
+        await ctx.send("cleared your playlist")
 
 load_dotenv() 
 token = os.getenv("TOKEN")
