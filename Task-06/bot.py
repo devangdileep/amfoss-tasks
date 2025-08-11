@@ -8,6 +8,10 @@ intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='/', intents=intents , help_command = None)
 
+@bot.event
+async def on_ready():
+    print(f' ✅ Online : {bot.user.name}')
+
 @bot.command()
 async def help(ctx):
     embed = discord.Embed(title = "Available Commands",color=0x1DB954)
