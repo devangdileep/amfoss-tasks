@@ -68,32 +68,42 @@ async def playlist(ctx, action=None, *, song=None):
     with open("playlist.json", "r") as f:
         playlists = json.load(f)
     user_id = str(ctx.author.id)
+
     if action == "add":
         if user_id not in playlists:
             playlists[user_id] = []
         playlists[user_id].append(song)
         with open("playlist.json", "w") as f:
             json.dump(playlists, f)
-        await ctx.send(f"added `{song}` to your playlist")
+        embed = discord.Embed(title="🎵 **Playlist Updated**", color=0x1DB954)
+        embed.add_field(name="Song Added", value=song, inline=False)
+        await ctx.send(embed=embed)
 
     elif action == "remove":
         user_id in playlists and song in playlists[user_id]
         playlists[user_id].remove(song)
         with open("playlist.json", "w") as f:
             json.dump(playlists, f)
-        await ctx.send(f"removed `{song}` from your playlist")
+        discord.Embed(title="🎵 **Playlist Updated**", color=0x1DB954)
+        embed.add_field(name="Song Removed", value=song, inline=False)
+        await ctx.send(embed=embed)
+
     elif action == "view":
         text = ""
         counter = 1
         for s in playlists[user_id]:
             text += f"{counter}. {s}\n"
             counter += 1
-        await ctx.send(f"your playlist:\n{text}")
+        embed = discord.Embed(title="🎵 **Your Playlist**", color=0x1DB954)
+        embed.add_field(name="", value=text, inline=False)
+        await ctx.send(embed=embed) 
+    
     elif action == "clear":
         playlists[user_id] = []
         with open("playlist.json", "w") as f:
             json.dump(playlists, f)
-        await ctx.send("cleared your playlist")
+        embed = discord.Embed(title="🎵 **Playlist Cleared**", color=0x1DB954)
+        await ctx.send(embed=embed)
 
 load_dotenv() 
 token = os.getenv("TOKEN")
