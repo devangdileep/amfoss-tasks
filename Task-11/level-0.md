@@ -1,9 +1,9 @@
-*Commands Learned*
+**Commands Learned**
 ==================
 
 ssh user@ip -p [port]
 
-*Password for 1st level*
+**Password for 1st level**
 ========================
 Congratulations on your first steps into the bandit game!!
 Please make sure you have read the rules at https://overthewire.org/rules/
@@ -13,7 +13,7 @@ contribute to the OverTheWire community so we can keep these games free!
 
 The password you are looking for is: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
 
-*Terminal*
+**Terminal**
 ==============
 
 ```
