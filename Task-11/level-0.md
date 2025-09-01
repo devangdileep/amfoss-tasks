@@ -1,7 +1,7 @@
 **Commands Learned**
 ==================
 
-ssh user@ip -p [port]
+```ssh user@ip -p [port]```
 
 **Password for 1st level**
 ========================
