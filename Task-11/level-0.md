@@ -1,7 +1,10 @@
 **Commands Learned**
 ==================
 
-```ssh user@ip -p [port]```
+```
+ssh user@ip -p [port] -> connect to a remote server using secure shell
+cat {file} -> shows file in terminal
+```
 
 **Password for 1st level**
 ========================
