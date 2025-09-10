@@ -4,8 +4,9 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtGui import QFont, QMovie
 from PySide6.QtCore import Qt
-
 from dashboard import Dashboard
+from import_csv import fetch_data
+
 
 
 class CoverPage(QWidget):
@@ -77,6 +78,10 @@ class CoverPage(QWidget):
 
 
 if __name__ == "__main__":
+    try:
+        fetch_data()
+    except Exception as e:
+        print(f"Error importing data: {e}")
     app = QApplication(sys.argv)
     window = CoverPage()
     window.show()

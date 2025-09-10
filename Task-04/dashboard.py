@@ -6,6 +6,7 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtGui import QFont
 from PySide6.QtCore import Qt
+import mysql.connector as ms
 
 class Dashboard(QWidget):
     def __init__(self):
@@ -13,6 +14,16 @@ class Dashboard(QWidget):
         self.setWindowTitle("CineScope – Dashboard")
         self.setMinimumSize(1200, 800)
         self.setStyleSheet("background-color: #121212; color: white; padding: 20px;")
+
+        self.db = ms.connect(
+            host="localhost",
+            user="root",
+            password="root",
+            database="test"
+        )
+        self.cursor = self.db.cursor()
+        self.search_mode = None
+        self.selected_columns = ["Series_Title", "Released_Year", "Genre", "IMDB_Rating","Director", "Star1", "Star2", "Star3"]
         self.init_ui()
 
     def init_ui(self):
@@ -141,6 +152,7 @@ class Dashboard(QWidget):
         split_layout.addLayout(right_side_layout, 8)
         main_layout.addLayout(split_layout)
         self.setLayout(main_layout)
+        self.fetched_data()
 
     def get_button_style(self, is_selected):
         if is_selected:
@@ -176,6 +188,24 @@ class Dashboard(QWidget):
 
     def export_csv(self):
         self.output_console.append("Exporting to CSV...")
+    def fetched_data(self):
+        columns = ", ".join(self.selected_columns)
+        sql = f"SELECT {columns} FROM movies"
+        self.cursor.execute(sql)
+        results = self.cursor.fetchall() 
+        self.table.setColumnCount(len(self.selected_columns))
+        self.table.setRowCount(len(results))
+        self.table.setHorizontalHeaderLabels(self.selected_columns)
+
+        row_index = 0
+        for row_data in results:
+            col_index = 0
+            for value in row_data:
+                self.table.setItem(row_index, col_index, QTableWidgetItem(str(value)))
+                col_index += 1
+            row_index += 1
+
+        self.output_console.append("Loaded " + str(len(results)) + " movies.")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
