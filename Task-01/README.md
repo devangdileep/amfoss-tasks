@@ -48,5 +48,3 @@ Organize the codes and then find the key to save humanity
 -----------
 
 after encoding the string is = ZSwgYW5kIGFkZCBhIHNjcmVlbnNob3QgdG8gc29sdXRpbM1zLm1k
-
-S
