@@ -192,3 +192,92 @@ This document contains the commands I learned while completing each level of the
 
 - `git commit -m "commit message"`  
   Commits the staged permission change to the repository history
+
+## commit-parts
+
+- `git add -p file.txt`  
+Starts interactive staging, allowing only selected parts of `file.txt` to be added to the staging area. I used `s` to split the changes into smaller hunks, then `y` to stage the Task 1 changes and `n` to skip the remaining changes.
+
+- `git commit -m "Add Task 1 changes"`  
+Creates a commit containing only the staged Task 1 changes.
+
+- `git add file.txt`  
+Stages the remaining changes in the file.
+
+- `git commit -m "Add remaining changes"`  
+Creates another commit containing the rest of the changes.
+
+### Interactive options used
+
+- `y` – Stage this hunk.
+- `n` – Do not stage this hunk.
+- `s` – Split the hunk into smaller hunks.
+
+## pick-your-features
+
+- `git cherry-pick feature-a`  
+Copies the commit from the `feature-a` branch to the current branch.
+
+- `git cherry-pick feature-b`  
+Copies the commit from the `feature-b` branch to the current branch.
+
+- `git cherry-pick feature-c`  
+Copies the commit from the `feature-c` branch, but a merge conflict occurs.
+
+- Resolve the merge conflict in `program.txt`.
+
+- `git add program.txt`  
+Stages the resolved file.
+
+- `git commit -m "main"`  
+Completes the cherry-pick after resolving the conflict.
+
+### Why I used these commands
+
+I used `git cherry-pick` to bring commits from the three feature branches into the `pick-your-features` branch. When `feature-c` caused a merge conflict, I fixed it manually, staged the file, and completed the cherry-pick.
+
+## rebase-complex
+
+- `git log rebase-complex`  
+Used to view the commit history and identify the commit before the bug fix commits.
+
+- `git rebase --onto your-master d5653fa5f724058fac4f2e3b0c791543d3305604 rebase-complex`  
+Moves all commits after `d5653fa5f724058fac4f2e3b0c791543d3305604` from the `rebase-complex` branch onto the `your-master` branch.
+
+### Why I used these commands
+
+The goal was to move only the bug fix commits from the `rebase-complex` branch to the `your-master` branch using a single rebase command. I first checked the commit history to find the correct commit hash, then used `git rebase --onto` to rebase only the required commits.
+
+## invalid-order
+
+- `git rebase -i HEAD~2`  
+Starts an interactive rebase for the last two commits.
+
+- Swap the order of the two commits in the editor, then save and close it.
+
+### Why I used this command
+
+The goal of this exercise was to change the order of the last two commits. I used interactive rebase to reorder the commits without changing their contents.
+
+## find-swearwords
+
+- `git log -S "shit"`  
+Searches the commit history to find commits that added or removed the word "shit".
+
+- `git rebase -i`  
+Starts an interactive rebase to edit the commits containing the unwanted word.
+
+- Edit the files and remove the swear word.
+
+- `git add <file>`  
+Stages the modified file.
+
+- `git commit --amend`  
+Updates the current commit with the corrected changes.
+
+- `git rebase --continue`  
+Continues the rebase until all the required commits are fixed.
+
+### Why I used these commands
+
+I first searched the commit history to find the commits containing the swear word. Then I used interactive rebase to edit those commits, removed the unwanted word, amended each commit, and continued the rebase until all the commits were updated.
