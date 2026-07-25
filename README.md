@@ -47,7 +47,7 @@ My statistics are as shown:
 | Task List | Description | Status |
 |------------|-------------|--------|
 | Task-00 | [Install Linux](./Task-00) | Completed |
-| Task-01 | [Git Exercises](./Task-01) | Started |
+| Task-01 | [Git Exercises](./Task-01) | Completed |
 | Task-02 | [Terminal Voyage](./Task-02) | Not Started |
 | Task-03 | [Grand Line Restoration Initiative](./Task-03) | Not Started |
 | Task-04 | [The Pirate King's Challenge](./Task-04) | Not Started |
