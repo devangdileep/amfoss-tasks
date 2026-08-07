@@ -51,7 +51,7 @@ My statistics are as shown:
 | Task-02 | [Terminal Voyage](./Task-02) | Completed |
 | Task-03 | [Grand Line Restoration Initiative](./Task-03) | Not Started |
 | Task-04 | [The Pirate King's Challenge](./Task-04) | Not Started |
-| Task-05 | [Grand Line Guardian](./Task-05) | Not Started |
+| Task-05 | [Grand Line Guardian](./Task-05) | Completed |
 | Task-06 | [Pirate King's Scheduler](./Task-06) | Not Started |
 | Task-07 | [Berry Broker Discord Bot](./Task-07) | Not Started |
 | Task-08 | [The Ohara Archive](./Task-08) | Not Started |
