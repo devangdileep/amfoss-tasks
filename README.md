@@ -53,7 +53,7 @@ My statistics are as shown:
 | Task-04 | [The Pirate King's Challenge](./Task-04) | Not Started |
 | Task-05 | [Grand Line Guardian](./Task-05) | Completed |
 | Task-06 | [Pirate King's Scheduler](./Task-06) | Not Started |
-| Task-07 | [Berry Broker Discord Bot](./Task-07) | Not Started |
+| Task-07 | [Berry Broker Discord Bot](./Task-07) | Started |
 | Task-08 | [The Ohara Archive](./Task-08) | Not Started |
 | Task-09 | [One Piece Memory Matcher](./Task-09) | Not Started |
 | Task-10 | [Surprise Us](./Task-10) | Not Started |
