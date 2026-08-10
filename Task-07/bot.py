@@ -17,6 +17,10 @@ async def main():
     database.init_db()
 
     await bot.load_extension("commands.economy")
+    await bot.load_extension("commands.shop")
+    await bot.load_extension("commands.logpose")
+
+    
 
     token = os.getenv("DISCORD_TOKEN")
     await bot.start(token)
