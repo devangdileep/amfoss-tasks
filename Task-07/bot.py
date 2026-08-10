@@ -19,6 +19,7 @@ async def main():
     await bot.load_extension("commands.economy")
     await bot.load_extension("commands.shop")
     await bot.load_extension("commands.logpose")
+    await bot.load_extension("commands.raid")
 
     
 
