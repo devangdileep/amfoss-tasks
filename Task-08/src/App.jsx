@@ -29,7 +29,7 @@ export default function App() {
 
     if (res.data) {
       const items = res.data.map((item) => ({
-        id: item.movie_id,
+        id: Number(item.movie_id),
         title: item.title,
         poster_path: item.poster_path,
         release_date: item.release_date,
@@ -75,20 +75,21 @@ export default function App() {
       return
     }
 
-    const exists = watchlist.find((item) => item.id === movie.id)
+    const movieId = Number(movie.id)
+    const exists = watchlist.find((item) => Number(item.id) === movieId)
 
     if (exists) {
-      setWatchlist(watchlist.filter((item) => item.id !== movie.id))
+      setWatchlist(watchlist.filter((item) => Number(item.id) !== movieId))
       if (supabase) {
         await supabase
           .from('watchlist')
           .delete()
-          .eq('movie_id', movie.id)
+          .eq('movie_id', movieId)
           .eq('user_id', user.id)
       }
     } else {
       const newItem = {
-        id: movie.id,
+        id: movieId,
         title: movie.title,
         release_date: movie.release_date,
         vote_average: movie.vote_average,
@@ -102,14 +103,14 @@ export default function App() {
       if (supabase) {
         await supabase.from('watchlist').upsert({
           user_id: user.id,
-          movie_id: movie.id,
+          movie_id: movieId,
           title: movie.title,
           poster_path: movie.poster_path,
           release_date: movie.release_date,
           vote_average: movie.vote_average,
           overview: movie.overview,
           status: 'want'
-        })
+        }, { onConflict: 'user_id,movie_id' })
       }
     }
   }
@@ -120,24 +121,36 @@ export default function App() {
       return
     }
 
-    const exists = watchlist.find((item) => item.id === movie.id)
+    const movieId = Number(movie.id)
+    const exists = watchlist.find((item) => Number(item.id) === movieId)
     const newStatus = (exists && exists.status === 'watched') ? 'want' : 'watched'
 
     if (exists) {
-      setWatchlist(watchlist.map((item) => item.id === movie.id ? { ...item, status: newStatus } : item))
+      setWatchlist(watchlist.map((item) => Number(item.id) === movieId ? { ...item, status: newStatus } : item))
+    } else {
+      const newItem = {
+        id: movieId,
+        title: movie.title,
+        release_date: movie.release_date,
+        vote_average: movie.vote_average,
+        poster_path: movie.poster_path,
+        overview: movie.overview,
+        status: newStatus
+      }
+      setWatchlist([...watchlist, newItem])
     }
 
     if (supabase) {
       await supabase.from('watchlist').upsert({
         user_id: user.id,
-        movie_id: movie.id,
+        movie_id: movieId,
         title: movie.title,
         poster_path: movie.poster_path,
         release_date: movie.release_date,
         vote_average: movie.vote_average,
         overview: movie.overview,
         status: newStatus
-      })
+      }, { onConflict: 'user_id,movie_id' })
     }
   }
 
@@ -150,11 +163,11 @@ export default function App() {
   }
 
   function isAdded(id) {
-    return watchlist.some((item) => item.id === id)
+    return watchlist.some((item) => Number(item.id) === Number(id))
   }
 
   function isWatched(id) {
-    const found = watchlist.find((item) => item.id === id)
+    const found = watchlist.find((item) => Number(item.id) === Number(id))
     return found ? found.status === 'watched' : false
   }
 
