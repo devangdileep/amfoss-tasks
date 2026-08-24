@@ -2,6 +2,10 @@
 
 A movie watchlist web app built with React, Vite, TMDB API, and Supabase.
 
+## Live Demo
+
+- **Live URL**: [https://amfoss-tasks-ten.vercel.app/](https://amfoss-tasks-ten.vercel.app/)
+
 ## Implementation Brief
 
 - **Project Structure**: Organized code into `components/` (Navbar, MovieCard, MovieModal, AuthModal), `pages/` (Home, Watchlist), and `css/` for stylesheets.
