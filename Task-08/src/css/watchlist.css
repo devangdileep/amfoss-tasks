@@ -1,0 +1,43 @@
+.page-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.center {
+  text-align: center;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 6px 14px;
+  border-radius: 16px;
+  background-color: #26262b;
+  color: #a0a0ab;
+  font-size: 13px;
+}
+
+.tab.active {
+  background-color: #10b981;
+  color: #ffffff;
+}
+
+.auth-prompt {
+  background-color: #1a1a1e;
+  border: 1px solid #2e2e34;
+  border-radius: 8px;
+  padding: 30px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.auth-prompt p {
+  color: #a0a0ab;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
