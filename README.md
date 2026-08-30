@@ -56,5 +56,5 @@ My statistics are as shown:
 | Task-07 | [Berry Broker Discord Bot](./Task-07) | Completed |
 | Task-08 | [The Ohara Archive](./Task-08) | Completed |
 | Task-09 | [One Piece Memory Matcher](./Task-09) | Not Started |
-| Task-10 | [Surprise Us](./Task-10) | Not Started |
+| Task-10 | [Surprise Us](./Task-10) | Completed |
 
